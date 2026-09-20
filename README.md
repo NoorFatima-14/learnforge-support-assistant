@@ -1,9 +1,7 @@
 # LearnForge Support Assistant
 
-This is a prototype AI support assistant for LearnForge (an ed-tech
-company). It answers user questions using the FAQ/policy/ticket data they
-gave me, keeps track of multi-turn conversations, and hands off to a human
-when it isn't sure of the answer.
+This is a prototype AI support assistant for LearnForge. It answers user questions using the FAQ/policy/ticket data, keeps track of multi-turn conversations, and hands off to a human
+when it is not sure of the answer.
 
 Architecture diagram: [`architecture.md`](architecture.md)
 
