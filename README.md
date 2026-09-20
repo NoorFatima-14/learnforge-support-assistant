@@ -17,8 +17,7 @@ export GEMINI_API_KEY=your-key-here   # free key: https://aistudio.google.com/ap
 python src/chat.py
 ```
 
-The first time you run anything, it automatically reads the files in
-`data/` and builds a search index from them. You can also run
+ You can run
 `python src/retriever.py` on its own just to see what it retrieves for a
 few sample questions.
 
