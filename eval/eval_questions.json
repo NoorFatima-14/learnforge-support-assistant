@@ -1,0 +1,65 @@
+[
+  {
+    "id": "eval-01",
+    "question": "I bought a course yesterday, can I get a refund?",
+    "expected_chunk_ids": ["faq-02"],
+    "expect_escalate": false
+  },
+  {
+    "id": "eval-02",
+    "question": "How do I reset my LearnForge password?",
+    "expected_chunk_ids": ["faq-05"],
+    "expect_escalate": false
+  },
+  {
+    "id": "eval-03",
+    "question": "Is the refund window 7 days or 14 days for a single course?",
+    "expected_chunk_ids": ["faq-02", "policy-02"],
+    "expect_escalate": null
+  },
+  {
+    "id": "eval-04",
+    "question": "Are annual subscriptions billed monthly?",
+    "expected_chunk_ids": ["policy-01"],
+    "expect_escalate": null
+  },
+  {
+    "id": "eval-05",
+    "question": "There's a $79 charge on my card I don't recognize, I think someone hacked my account.",
+    "expected_chunk_ids": ["faq-15", "ticket-05"],
+    "expect_escalate": true
+  },
+  {
+    "id": "eval-06",
+    "question": "I think my account was compromised, someone changed my email",
+    "expected_chunk_ids": ["policy-07"],
+    "expect_escalate": true
+  },
+  {
+    "id": "eval-07",
+    "question": "What's the weather like today?",
+    "expected_chunk_ids": [],
+    "expect_escalate": true
+  },
+  {
+    "id": "eval-08",
+    "question": "What about for subscriptions instead of individual courses?",
+    "history": [
+      {"user": "What's the refund policy for a single course purchase?", "assistant": "Courses are generally refundable within 14 days if not substantially consumed."}
+    ],
+    "expected_chunk_ids": ["policy-01", "policy-02"],
+    "expect_escalate": null
+  },
+  {
+    "id": "eval-09",
+    "question": "Does LearnForge support screen readers?",
+    "expected_chunk_ids": ["faq-14", "policy-03"],
+    "expect_escalate": false
+  },
+  {
+    "id": "eval-10",
+    "question": "Can my brother use my LearnForge account too?",
+    "expected_chunk_ids": ["faq-10"],
+    "expect_escalate": false
+  }
+]
