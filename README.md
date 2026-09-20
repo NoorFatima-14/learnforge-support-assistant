@@ -30,7 +30,7 @@ python eval/run_eval.py
 
 ## How it works
 
-1. **Finding relevant info (retrieval)** — Each FAQ, policy, and ticket in
+1. **Retrieval** — Each FAQ, policy, and ticket in
    `data/` is turned into one chunk of text. Each chunk gets converted into
    a vector (a list of numbers that captures its meaning) using a small
    free model called `all-MiniLM-L6-v2`. When a user asks something, their
@@ -44,8 +44,8 @@ python eval/run_eval.py
    chunks, comparing a question against all of them takes almost no time,
    so a dedicated vector database wouldn't make anything faster here. It
    would matter once there are thousands of chunks (see
-   `docs/data_schema.md`).
-2. **Writing the answer (generation)** — Gemini gets the user's question
+   `ddata_schema.md`).
+2. **Generation** — Gemini gets the user's question
    plus the matching chunks, and is told to answer using *only* that
    information. Instead of a plain text reply, it returns a structured
    answer: the answer text, how confident it is, whether the answer is
@@ -53,7 +53,7 @@ python eval/run_eval.py
    whether a human should take over. This makes it easy for the code to act
    on the "should this escalate?" decision directly, instead of guessing
    based on how the answer sounds.
-3. **Remembering the conversation (multi-turn)** — Before searching for
+3. **Multi-turn** — Before searching for
    relevant chunks, the assistant first rewrites the user's newest message
    into a full, standalone question, using the earlier conversation as
    context. So if someone first asks about course refunds, then asks "what
