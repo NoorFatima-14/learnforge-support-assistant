@@ -5,8 +5,8 @@ company). It answers user questions using the FAQ/policy/ticket data they
 gave me, keeps track of multi-turn conversations, and hands off to a human
 when it isn't sure of the answer.
 
-Architecture diagram: [`diagrams/architecture.md`](diagrams/architecture.md)
-Data schema: [`docs/data_schema.md`](docs/data_schema.md)
+Architecture diagram: [`architecture.md`](architecture.md)
+
 
 ## Setup
 
