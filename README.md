@@ -29,19 +29,11 @@ python eval/run_eval.py
 
 1. **Retrieval** — Each FAQ, policy, and ticket in
    `data/` is turned into one chunk of text. Each chunk gets converted into
-   a vector (a list of numbers that captures its meaning) using a small
-   free model called `all-MiniLM-L6-v2`. When a user asks something, their
-   question gets converted into a vector too, and I compare it against
-   every chunk's vector to find the closest matches. I first tried a
-   simpler method (TF-IDF, which just matches on shared words) but it
-   missed things — for example, a search for "money back" didn't find the
-   refund FAQ, because "money back" and "refund" don't share any words.
-   Vectors fix that, since they capture meaning, not just exact words. I
-   didn't use a tool like FAISS for storing the vectors — with only 40
-   chunks, comparing a question against all of them takes almost no time,
-   so a dedicated vector database wouldn't make anything faster here. It
-   would matter once there are thousands of chunks (see
-   `ddata_schema.md`).
+   a vector  using free model `all-MiniLM-L6-v2`. When a user asks something, their
+   question gets converted into a vector too, and it gets compared against
+   every chunk's vector to find the closest matches, the ones whose
+   meaning is closest to the question, not just the ones sharing the same
+   words.
 2. **Generation** — Gemini gets the user's question
    plus the matching chunks, and is told to answer using *only* that
    information. Instead of a plain text reply, it returns a structured
@@ -86,7 +78,7 @@ python eval/run_eval.py
   similarity score. This is the weakest part of the current system, and
   the first thing I'd improve with more time (see Trade-offs below).
 
-## How I'd measure quality (eval plan)
+## How I would measure quality (eval plan)
 
 `eval/eval_questions.json` has 10 test questions: a few plain answerable
 ones, two that test the outdated/contradicting-data handling, a couple
@@ -116,7 +108,7 @@ would add:
   to — right now my test set is weighted toward checking it hands off
   *enough*, not toward checking it doesn't hand off *too much*.
 
-## Trade-offs — what I'd change with more time
+## Trade-offs — what I would change with more time
 
 - **Search**: already uses real vector search (see "How it works" above).
   The next step at real scale would be moving from directly comparing
